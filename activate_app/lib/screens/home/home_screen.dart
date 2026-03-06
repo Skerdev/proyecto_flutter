@@ -28,9 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fit Colombia · Inicio'),
-      ),
+      appBar: AppBar(title: const Text('Fit Colombia · Inicio')),
       bottomNavigationBar: const FitnessBottomNav(currentIndex: 0),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -131,4 +129,5 @@ class _DailyTask {
 
   final String title;
   bool done = false;
+}
 }
