@@ -28,6 +28,8 @@ class FitnessBottomNav extends StatelessWidget {
           case 2:
             Navigator.pushReplacementNamed(context, AppRoutes.plans);
             return;
+          default:
+            return;
         }
       },
       destinations: const [

@@ -130,3 +130,4 @@ class _DailyTask {
   final String title;
   bool done = false;
 }
+}
