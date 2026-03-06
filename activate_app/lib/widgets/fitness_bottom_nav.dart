@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../routes/app_routes.dart';
+import '../theme/app_colors.dart';
 
 class FitnessBottomNav extends StatelessWidget {
   const FitnessBottomNav({super.key, required this.currentIndex});
@@ -11,8 +12,8 @@ class FitnessBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return NavigationBar(
       selectedIndex: currentIndex,
-      backgroundColor: const Color(0xFF1C5DFF),
-      indicatorColor: const Color(0xFFCBF865),
+      backgroundColor: AppColors.white,
+      indicatorColor: AppColors.primaryBlue,
       labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
       onDestinationSelected: (index) {
         if (index == currentIndex) return;
@@ -24,18 +25,17 @@ class FitnessBottomNav extends StatelessWidget {
           case 1:
             Navigator.pushReplacementNamed(context, AppRoutes.feed);
             return;
+          case 2:
+            Navigator.pushReplacementNamed(context, AppRoutes.plans);
+            return;
           default:
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('La pantalla de perfil estará disponible pronto.'),
-              ),
-            );
+            return;
         }
       },
       destinations: const [
-        NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Home'),
-        NavigationDestination(icon: Icon(Icons.explore_outlined), label: 'Explore'),
-        NavigationDestination(icon: Icon(Icons.person_outline), label: 'Perfil'),
+        NavigationDestination(icon: Icon(Icons.home_outlined), label: 'Inicio'),
+        NavigationDestination(icon: Icon(Icons.dynamic_feed_outlined), label: 'Feed'),
+        NavigationDestination(icon: Icon(Icons.workspace_premium_outlined), label: 'Planes'),
       ],
     );
   }

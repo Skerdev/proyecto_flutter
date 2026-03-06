@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../theme/app_colors.dart';
 import '../../widgets/fitness_bottom_nav.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -28,9 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tu actividad diaria'),
-        backgroundColor: const Color(0xFF2E57FF),
-        foregroundColor: Colors.white,
+        title: const Text('Fit Colombia · Inicio'),
       ),
       bottomNavigationBar: const FitnessBottomNav(currentIndex: 0),
       body: ListView(
@@ -38,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           _buildWelcomeCard(),
           const SizedBox(height: 16),
-          _buildTaskCard(title: 'Rutina de ejercicios', tasks: _exerciseTasks, accent: const Color(0xFFDDE8FF)),
+          _buildTaskCard(title: 'Rutina de ejercicios', tasks: _exerciseTasks),
           const SizedBox(height: 16),
-          _buildTaskCard(title: 'Dieta diaria', tasks: _dietTasks, accent: const Color(0xFFFFEE9C)),
+          _buildTaskCard(title: 'Plan de nutrición', tasks: _dietTasks),
           const SizedBox(height: 16),
           _buildStatsCard(),
         ],
@@ -50,35 +49,45 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildWelcomeCard() {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
+        color: AppColors.primaryBlue,
         borderRadius: BorderRadius.circular(18),
-        gradient: const LinearGradient(colors: [Color(0xFF355DFF), Color(0xFF7B9DFF)]),
       ),
       child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Bienvenido Usuario ⭐⭐⭐', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w800)),
-          SizedBox(height: 8),
-          Text('Mantén el ritmo para lograr tus objetivos.', style: TextStyle(color: Colors.white70, fontSize: 16)),
+          Text(
+            '¡Bienvenido a Fit Colombia!',
+            style: TextStyle(color: AppColors.white, fontSize: 22, fontWeight: FontWeight.w800),
+          ),
+          SizedBox(height: 6),
+          Text(
+            'Tu progreso de hoy está listo para continuar.',
+            style: TextStyle(color: AppColors.white, fontSize: 15),
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildTaskCard({required String title, required List<_DailyTask> tasks, required Color accent}) {
+  Widget _buildTaskCard({required String title, required List<_DailyTask> tasks}) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(18)),
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(18),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+          Text(title, style: const TextStyle(fontSize: 19, fontWeight: FontWeight.w800)),
           const SizedBox(height: 8),
           ...tasks.map(
             (task) => CheckboxListTile(
               contentPadding: EdgeInsets.zero,
               value: task.done,
+              activeColor: AppColors.primaryBlue,
               title: Text(task.title),
               controlAffinity: ListTileControlAffinity.leading,
               onChanged: (value) => setState(() => task.done = value ?? false),
@@ -96,16 +105,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(color: const Color(0xFFCAF7AE), borderRadius: BorderRadius.circular(18)),
+      decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(18)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Progreso del día', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700)),
+          const Text('Progreso del día', style: TextStyle(fontSize: 19, fontWeight: FontWeight.w700)),
           const SizedBox(height: 12),
           LinearProgressIndicator(
             value: progress,
             minHeight: 12,
-            backgroundColor: Colors.white,
+            backgroundColor: const Color(0xFFD6EDF7),
+            color: AppColors.primaryBlue,
             borderRadius: BorderRadius.circular(12),
           ),
           const SizedBox(height: 8),

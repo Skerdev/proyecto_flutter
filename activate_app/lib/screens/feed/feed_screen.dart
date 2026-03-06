@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../theme/app_colors.dart';
 import '../../widgets/fitness_bottom_nav.dart';
 
 class FeedScreen extends StatelessWidget {
@@ -10,27 +11,26 @@ class FeedScreen extends StatelessWidget {
     final posts = [
       const _Post(
         author: 'Andrea Fit',
-        message: 'Hoy completé entrenamiento funcional de 45 minutos. ¡Vamos por más! 💪',
-        imageUrl: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80',
+        message: 'Completé 45 min de funcional. Hoy gané resistencia 💪',
+        imageUrl: 'https://images.pexels.com/photos/1552242/pexels-photo-1552242.jpeg?auto=compress&cs=tinysrgb&w=1200',
       ),
       const _Post(
         author: 'Carlos Runner',
-        message: 'Ruta de 10K terminada. Recuerda hidratarte y estirar al finalizar.',
-        imageUrl: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80',
+        message: '10K finalizados. Hidratación + estiramiento obligatorio ✅',
+        imageUrl: 'https://images.pexels.com/photos/2402777/pexels-photo-2402777.jpeg?auto=compress&cs=tinysrgb&w=1200',
       ),
       const _Post(
-        author: 'Gym Team',
-        message: 'Reto del día: 4 series de sentadillas + 20 burpees. ¿Quién se anima?',
-        imageUrl: 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?auto=format&fit=crop&w=900&q=80',
+        author: 'Gym Team Bogotá',
+        message: 'Reto: 4 series de sentadillas + 20 burpees. ¿Te unes?',
+        imageUrl: 'https://images.pexels.com/photos/841130/pexels-photo-841130.jpeg?auto=compress&cs=tinysrgb&w=1200',
       ),
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tu red social deportiva'),
-        backgroundColor: const Color(0xFFDDF2C0),
-      ),
+      appBar: AppBar(title: const Text('Fit Colombia · Feed')),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.primaryBlue,
+        foregroundColor: AppColors.white,
         onPressed: () {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Próximamente podrás crear publicaciones.')),
@@ -45,6 +45,7 @@ class FeedScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final post = posts[index];
           return Card(
+            color: AppColors.white,
             margin: const EdgeInsets.only(bottom: 14),
             clipBehavior: Clip.antiAlias,
             child: Column(
@@ -52,12 +53,11 @@ class FeedScreen extends StatelessWidget {
               children: [
                 ListTile(
                   leading: CircleAvatar(
-                    backgroundColor: const Color(0xFF1C5DFF),
-                    child: Text(post.author.substring(0, 1), style: const TextStyle(color: Colors.white)),
+                    backgroundColor: AppColors.primaryBlue,
+                    child: Text(post.author.substring(0, 1), style: const TextStyle(color: AppColors.white)),
                   ),
                   title: Text(post.author, style: const TextStyle(fontWeight: FontWeight.bold)),
                   subtitle: const Text('Hace 1 hora'),
-                  trailing: const Icon(Icons.more_horiz),
                 ),
                 Image.network(post.imageUrl, height: 200, width: double.infinity, fit: BoxFit.cover),
                 Padding(
