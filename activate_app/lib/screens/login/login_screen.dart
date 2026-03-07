@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../routes/app_routes.dart';
+import '../../routes/app_routes.dart' as app_routes;
 import '../../theme/app_colors.dart';
 import '../../widgets/fit_colombia_logo.dart';
 
@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacementNamed(context, AppRoutes.home);
+      Navigator.pushReplacementNamed(context, app_routes.AppRoutes.home);
     }
   }
 

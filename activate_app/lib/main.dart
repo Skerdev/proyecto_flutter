@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'routes/app_routes.dart';
+import 'routes/app_routes.dart' as app_routes;
 import 'screens/feed/feed_screen.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/login/login_screen.dart';
@@ -36,12 +36,12 @@ class FitColombiaApp extends StatelessWidget {
           surfaceTintColor: Colors.transparent,
         ),
       ),
-      initialRoute: AppRoutes.login,
+      initialRoute: app_routes.AppRoutes.login,
       routes: {
-        AppRoutes.login: (context) => const LoginScreen(),
-        AppRoutes.home: (context) => const HomeScreen(),
-        AppRoutes.feed: (context) => const FeedScreen(),
-        AppRoutes.plans: (context) => const PlansScreen(),
+        app_routes.AppRoutes.login: (context) => const LoginScreen(),
+        app_routes.AppRoutes.home: (context) => const HomeScreen(),
+        app_routes.AppRoutes.feed: (context) => const FeedScreen(),
+        app_routes.AppRoutes.plans: (context) => const PlansScreen(),
       },
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../routes/app_routes.dart';
+import '../routes/app_routes.dart' as app_routes;
 import '../theme/app_colors.dart';
 
 class FitnessBottomNav extends StatelessWidget {
@@ -20,15 +20,13 @@ class FitnessBottomNav extends StatelessWidget {
 
         switch (index) {
           case 0:
-            Navigator.pushReplacementNamed(context, AppRoutes.home);
+            Navigator.pushReplacementNamed(context, app_routes.AppRoutes.home);
             return;
           case 1:
-            Navigator.pushReplacementNamed(context, AppRoutes.feed);
+            Navigator.pushReplacementNamed(context, app_routes.AppRoutes.feed);
             return;
           case 2:
-            Navigator.pushReplacementNamed(context, AppRoutes.plans);
-            return;
-          default:
+            Navigator.pushReplacementNamed(context, app_routes.AppRoutes.plans);
             return;
         }
       },

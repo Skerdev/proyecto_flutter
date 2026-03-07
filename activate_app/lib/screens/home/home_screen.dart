@@ -123,11 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
-
 class _DailyTask {
   _DailyTask(this.title);
 
   final String title;
   bool done = false;
-}
 }
